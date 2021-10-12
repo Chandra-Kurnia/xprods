@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import React from 'react'
-import Home from "./views/Home";
+import productController from './controllers/ProductController'
 
 const Routes = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact path='/' component={Home}/>
+                <Route exact path='/' component={productController}/>
             </Switch>
         </BrowserRouter>
     )
