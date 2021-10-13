@@ -35,7 +35,7 @@ const ProductView = ({
       sortable: true,
     },
     {
-      name: 'qty',
+      name: 'Quantity',
       selector: (row) => row.qty,
       sortable: true,
     },

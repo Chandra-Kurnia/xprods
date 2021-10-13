@@ -1,32 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
-import cam from '../../assets/cam.png'
+import cam from '../../assets/cam.png';
 
 const Input = (props) => {
   return (
     <StyledInput className={props.className}>
       <span>{props.title}</span>
       {props.type !== 'file' ? (
-        props.disabled === true ?
-        <input
-          type={props.type ? props.type : 'text'}
-          name={props.name}
-          defaultValue={props.defaultValue}
-          disabled
-        />
-        :
-        <input
-          type={props.type ? props.type : 'text'}
-          name={props.name}
-          defaultValue={props.defaultValue}
-          onChange={(e) => props.onChange(e)}
-        />
+        props.disabled === true ? (
+          <input type={props.type ? props.type : 'text'} name={props.name} defaultValue={props.defaultValue} disabled />
+        ) : (
+          <input
+            type={props.type ? props.type : 'text'}
+            name={props.name}
+            defaultValue={props.defaultValue}
+            onChange={(e) => props.onChange(e)}
+          />
+        )
       ) : (
-          <>
-        <label htmlFor="picture" className='imgPicker'>
+        <>
+          <label htmlFor="picture" className="imgPicker">
             <img src={props.src ? props.src : cam} alt="" />
-        </label>
-        <input id='picture' className='d-none' type="file" name="picture" onChange={(e) => props.onChange(e)}/>
+          </label>
+          <input
+            id="picture"
+            className="d-none"
+            type="file"
+            name="picture"
+            onChange={(e) => props.onChange(e)}
+            accept="image/jpeg, image/png"
+          />
         </>
       )}
     </StyledInput>
@@ -54,7 +57,7 @@ const StyledInput = styled.div`
     }
   }
 
-  .imgPicker{
+  .imgPicker {
     width: 150px;
     min-height: 150px;
     display: flex;
@@ -63,10 +66,10 @@ const StyledInput = styled.div`
     /* padding: 10px; */
     background-color: #ffffff;
 
-    img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
   }
 `;

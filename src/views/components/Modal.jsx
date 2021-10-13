@@ -51,7 +51,7 @@ const Modal = ({
           <div className="modalContent">
             <Input title="Id" name="id" defaultValue={product.id} disabled={true} />
             <Input title="Name" name="name" onChange={(e) => handleFormUpdate(e)} defaultValue={product.name} />
-            <Input title="QTY" name="qty" onChange={(e) => handleFormUpdate(e)} defaultValue={product.qty} />
+            <Input title="Quantity" name="qty" onChange={(e) => handleFormUpdate(e)} defaultValue={product.qty} />
             <Input
               title="Expired At"
               name="expiredAt"
@@ -70,7 +70,7 @@ const Modal = ({
           <div className="modalContent">
             <Input title="Id" name="id" onChange={(e) => handleForm(e)} />
             <Input title="Name" name="name" onChange={(e) => handleForm(e)} />
-            <Input title="QTY" name="qty" onChange={(e) => handleForm(e)} />
+            <Input title="Quantity" name="qty" onChange={(e) => handleForm(e)} />
             <Input title="Expired At" name="expiredAt" onChange={(e) => handleForm(e)} type="date" />
             <Input title="Picture" onChange={(e) => handleImg(e)} type="file" src={baseImage} />
           </div>
