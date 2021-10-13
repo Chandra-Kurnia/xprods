@@ -140,9 +140,9 @@ const ProductView = ({
         <ButtonAdd onClick={() => setmodal(true)}>Add Product</ButtonAdd>
         <ButtonAdd onClick={switchTrash}>
           {data.length > 0 && data[0].isActive === true ?
-          'Switch Product'
-        :
           'Switch Trash'
+        :
+          'Switch Product'
         }
           </ButtonAdd>
         {data.length > 0 ? (

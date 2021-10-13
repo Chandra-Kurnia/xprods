@@ -94,10 +94,10 @@ const ProductController = () => {
     const switchTrash = () => {
         if(trash === true){
             settrash(false)
-            notify('Switch to product')
+            notify('Switch to trash')
         }else{
             settrash(true)
-            notify('Switch to trash')
+            notify('Switch to product')
         }
     }
 

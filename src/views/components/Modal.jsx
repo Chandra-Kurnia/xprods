@@ -5,31 +5,39 @@ import {useState} from 'react';
 import {useSelector} from 'react-redux';
 // import imageToBase64 from 'image-to-base64'
 
-const Modal = ({willCancel, handleForm, handleAddProduct, handleUpdateProduct, handleFormUpdate, title, modalForUpdate}) => {
+const Modal = ({
+  willCancel,
+  handleForm,
+  handleAddProduct,
+  handleUpdateProduct,
+  handleFormUpdate,
+  title,
+  modalForUpdate,
+}) => {
   const {product} = useSelector((state) => state.products);
   const [baseImage, setbaseImage] = useState();
 
   const handleImg = (e) => {
     setbaseImage(URL.createObjectURL(e.target.files[0]));
-    const reader = new FileReader()
-    reader.onloadend = function() {
-      setbaseImage(reader.result)
-      if(modalForUpdate === true){
+    const reader = new FileReader();
+    reader.onloadend = function () {
+      setbaseImage(reader.result);
+      if (modalForUpdate === true) {
         handleFormUpdate({
-          target:{
+          target: {
             name: 'picture',
-            value: reader.result
-          }
-        })
-    }else{
-      handleForm({
-        target:{
-          name: 'picture',
-          value: reader.result
-        }
-      })
-    }
-    }
+            value: reader.result,
+          },
+        });
+      } else {
+        handleForm({
+          target: {
+            name: 'picture',
+            value: reader.result,
+          },
+        });
+      }
+    };
     reader.readAsDataURL(e.target.files[0]);
   };
 
@@ -42,10 +50,21 @@ const Modal = ({willCancel, handleForm, handleAddProduct, handleUpdateProduct, h
         {modalForUpdate === true ? (
           <div className="modalContent">
             <Input title="Id" name="id" defaultValue={product.id} disabled={true} />
-            <Input title="Name" name="name" onChange={(e) => handleFormUpdate(e)} defaultValue={product.name}/>
-            <Input title="QTY" name="qty" onChange={(e) => handleFormUpdate(e)} defaultValue={product.qty}/>
-            <Input title="Expired At" name="expiredAt" onChange={(e) => handleFormUpdate(e)} type="date" defaultValue={product.expiredAt}/>
-            <Input title="Picture" onChange={(e) => handleImg(e)} type="file" src={baseImage ? baseImage : product.picture} />
+            <Input title="Name" name="name" onChange={(e) => handleFormUpdate(e)} defaultValue={product.name} />
+            <Input title="QTY" name="qty" onChange={(e) => handleFormUpdate(e)} defaultValue={product.qty} />
+            <Input
+              title="Expired At"
+              name="expiredAt"
+              onChange={(e) => handleFormUpdate(e)}
+              type="date"
+              defaultValue={product.expiredAt}
+            />
+            <Input
+              title="Picture"
+              onChange={(e) => handleImg(e)}
+              type="file"
+              src={baseImage ? baseImage : product.picture}
+            />
           </div>
         ) : (
           <div className="modalContent">
@@ -60,16 +79,15 @@ const Modal = ({willCancel, handleForm, handleAddProduct, handleUpdateProduct, h
           <button className="btnCancel" onClick={() => willCancel()}>
             Cancel
           </button>
-          {
-              modalForUpdate === true ?
-          <button className="btnAdd" onClick={() => handleUpdateProduct(product.id)}>
-            Update
-          </button>
-              :
-          <button className="btnAdd" onClick={handleAddProduct}>
-            Add
-          </button>
-          }
+          {modalForUpdate === true ? (
+            <button className="btnAdd" onClick={() => handleUpdateProduct(product.id)}>
+              Update
+            </button>
+          ) : (
+            <button className="btnAdd" onClick={handleAddProduct}>
+              Add
+            </button>
+          )}
         </div>
       </div>
     </ModalWrapper>
@@ -88,9 +106,17 @@ const ModalWrapper = styled.div`
 
   .modalBox {
     background-color: white;
-    width: 40%;
+    width: 90%;
     height: 93%;
     border-radius: 10px;
+
+    @media (min-width: 768px) {
+      width: 60%;
+    }
+
+    @media (min-width: 992px) {
+      width: 40%;
+    }
 
     .modalTitle {
       font-size: 30px;
