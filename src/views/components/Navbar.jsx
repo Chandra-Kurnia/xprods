@@ -5,7 +5,7 @@ const Navbar = () => {
   return (
     <nav class="navbar navbar-dark bg-dark">
       <div class="container">
-        <Link href='/' className='navbar-brand'>
+        <Link to='/' className='navbar-brand'>
           xProds
         </Link>
       </div>

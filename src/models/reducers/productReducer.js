@@ -11,6 +11,16 @@ const productReducer = (state = initialState, action) => {
             ...state,
             products: action.payload
         }
+        case 'getProduct':
+            return{
+                ...state,
+                product: action.payload
+            }
+        case 'Loading':
+            return{
+                ...state,
+                loading: action.payload
+            }
         default:
             return state
     }
